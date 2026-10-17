@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://cdn.sheetjs.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://fonts.googleapis.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Lawak Store Test Dashboard</title>
+  <meta name="description" content="Plan a Smoke, Regression or Full Cycle run by phase, sprint and module, read the test cases and open the Word and Excel documents.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23335fff'/%3E%3Ctext x='16' y='21' font-family='Arial' font-weight='700' font-size='13' fill='white' text-anchor='middle'%3ELS%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+  <meta name="theme-color" content="#f5f1ee">
+  <script src="../assets/boot.js?v=4"></script>
+  <link rel="stylesheet" href="../assets/site.css?v=4">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="../" aria-label="Lawak Store QA Showcase, overview"><span class="brand-mark" aria-hidden="true">LS</span><span class="brand-name nav-text">LAWAK QA</span></a>
+      <nav class="nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="../" title="Overview"><svg class="icon nav-icon" aria-hidden="true"><use href="../assets/icons.svg?v=4#i-house"/></svg><span class="nav-text">Overview</span></a></li>
+          <li><a href="../store/" title="Demo store"><svg class="icon nav-icon" aria-hidden="true"><use href="../assets/icons.svg?v=4#i-shopping-bag"/></svg><span class="nav-text">Demo store</span></a></li>
+          <li><a href="./" aria-current="page" title="Test dashboard"><svg class="icon nav-icon" aria-hidden="true"><use href="../assets/icons.svg?v=4#i-layout-dashboard"/></svg><span class="nav-text">Test dashboard</span></a></li>
+          <li><a href="#documents" title="Documents"><svg class="icon nav-icon" aria-hidden="true"><use href="../assets/icons.svg?v=4#i-clipboard-list"/></svg><span class="nav-text">Documents</span></a></li>
+        </ul>
+        <hr class="nav-sep">
+        <ul class="nav-list">
+          <li><a href="https://fattahwg.github.io/" rel="noopener" title="Portfolio"><svg class="icon nav-icon" aria-hidden="true"><use href="../assets/icons.svg?v=4#i-user"/></svg><span class="nav-text">Portfolio</span><svg class="icon nav-ext-icon" aria-hidden="true"><use href="../assets/icons.svg?v=4#i-arrow-up-right"/></svg></a></li>
+          <li><a href="https://github.com/FattahWG/Automations-Test-Preset" rel="noopener" title="GitHub"><svg class="icon nav-icon" aria-hidden="true"><use href="../assets/icons.svg?v=4#b-github"/></svg><span class="nav-text">GitHub</span><svg class="icon nav-ext-icon" aria-hidden="true"><use href="../assets/icons.svg?v=4#i-arrow-up-right"/></svg></a></li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="scrim" hidden></div>
+    <div class="frame">
+      <header class="topbar">
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Open menu"><svg class="icon i-open" aria-hidden="true"><use href="../assets/icons.svg?v=4#i-menu"/></svg><svg class="icon i-close" aria-hidden="true"><use href="../assets/icons.svg?v=4#i-x"/></svg></button>
+        <button class="collapse-btn" type="button" aria-controls="sidebar" aria-pressed="false" aria-label="Collapse sidebar"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg?v=4#i-panel-left"/></svg></button>
+        <span class="topbar-title">Test Dashboard</span>
+        <div class="topbar-actions"><a class="btn small" href="https://fattahwg.github.io/" rel="noopener" aria-label="Portfolio"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg?v=4#i-user"/></svg><span class="hide-sm">Portfolio</span></a></div>
+      </header>
+      <main class="wrap" id="main">
+    <section>
+      <h1>Plan a run</h1>
+      <p class="muted" style="max-width:70ch">Choose the suite, then narrow it by phase, sprint and module. The dashboard lists the matching cases and writes the commands from the cheat sheet. Run them in <code>demo/</code> on your laptop. The result comes back here with its Word evidence.</p>
+    </section>
+
+    <section class="grid cols-4" aria-label="Summary">
+      <div class="card pad kpi"><div class="label">Selected cases</div><div class="value" id="k-selected">-</div><div class="sub" id="k-selected-sub">&nbsp;</div></div>
+      <div class="card pad kpi"><div class="label">Estimated time</div><div class="value" id="k-time">-</div><div class="sub">From the last measured runs</div></div>
+      <div class="card pad kpi"><div class="label">Last result of the selection</div><div class="value" id="k-result">-</div><div class="sub" id="k-result-sub">&nbsp;</div></div>
+      <div class="card pad kpi"><div class="label">Open defects</div><div class="value">1</div><div class="sub">DEF-001 (TC-CHK-006)</div></div>
+    </section>
+
+    <section class="card pad stack" aria-labelledby="builder-title">
+      <h2 id="builder-title">1. Suite and scope</h2>
+      <fieldset style="border:0;padding:0;margin:0">
+        <legend class="sr-only">Suite</legend>
+        <div class="choice" id="suite-choice"></div>
+      </fieldset>
+      <div class="filters">
+        <div class="field"><label for="f-phase">Phase</label><select id="f-phase"></select></div>
+        <div class="field"><label for="f-sprint">Sprint</label><select id="f-sprint"></select></div>
+        <div class="field"><label for="f-module">Module</label><select id="f-module"></select></div>
+      </div>
+      <div>
+        <h3 style="margin-top:8px">2. Commands for this selection</h3>
+        <div class="cmd-label">Official run (new RunTestN folder, Word evidence, workbook, dashboard)</div>
+        <pre class="cmd" id="cmd-run"></pre>
+        <div class="cmd-label">Playwright only (debug in a visible browser)</div>
+        <pre class="cmd" id="cmd-pw"></pre>
+        <div id="bru-wrap">
+          <div class="cmd-label">Bruno CLI only (API cases)</div>
+          <pre class="cmd" id="cmd-bru"></pre>
+        </div>
+        <details style="margin-top:14px">
+          <summary style="cursor:pointer;font-weight:700">Cheat sheet: more commands</summary>
+          <div id="cheat" class="stack" style="margin-top:10px"></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="cases-title">
+      <div class="pad row between" style="padding-bottom:12px">
+        <h2 id="cases-title" style="margin:0">3. Test cases in the selection</h2>
+        <div style="min-width:min(320px,100%)"><label class="sr-only" for="q">Search cases</label><input type="search" id="q" placeholder="Search by ID or title"></div>
+      </div>
+      <div class="table-wrap" style="max-height:640px">
+        <table>
+          <thead><tr><th>ID</th><th>Test case</th><th>Module</th><th>Sprint</th><th>Layer</th><th>Priority</th><th>Suites</th><th>Last result</th></tr></thead>
+          <tbody id="cases"><tr><td colspan="8" class="empty">Loading the test cases...</td></tr></tbody>
+        </table>
+      </div>
+      <p class="muted pad" style="font-size:.84rem;margin:0">Select a row to see its steps and expected results.</p>
+    </section>
+
+    <section aria-labelledby="runs-title">
+      <h2 id="runs-title">4. Run history</h2>
+      <div class="grid" id="runs"><div class="card empty">Loading the run history...</div></div>
+    </section>
+
+    <section id="documents" aria-labelledby="docs-title">
+      <h2 id="docs-title">5. Documents</h2>
+      <p class="muted">The test plan and the evidence are Word files. The test cases are an Excel workbook with one tab per sprint. Preview them here or download them.</p>
+      <div class="grid cols-3" id="doc-cards"></div>
+      <div class="card pad stack" style="margin-top:16px">
+        <div class="row between"><h3 id="viewer-title" style="margin:0">Preview</h3><a class="btn small" id="viewer-download" href="#" download hidden>Download</a></div>
+        <div class="viewer" id="viewer"><div class="empty">Choose Preview on a document.</div></div>
+      </div>
+    </section>
+      </main>
+      <footer><div class="wrap">Lawak Store QA Showcase &middot; the test cases come from <code>demo/test-cases/source/lawak-store.json</code></div></footer>
+    </div>
+  </div>
+  <script src="../assets/shell.js?v=4" defer></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" integrity="sha384-+mbV2IY1Zk/X1p/nWllGySJSUN8uMs+gUAN10Or95UBH0fpj6GfKgPmgC5EXieXG" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/docx-preview@0.4.0/dist/docx-preview.min.js" integrity="sha384-UkwbeBm1NknJfLd5UU4RI1j7PidBeZE3tIiKY1k+n7RQ+kEJ0dkTC0u53xTtRC9r" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js" integrity="sha384-EnyY0/GSHQGSxSgMwaIPzSESbqoOLSexfnSMN2AP+39Ckmn92stwABZynq1JyzdT" crossorigin="anonymous" defer></script>
+  <script src="dashboard.js?v=4" defer></script>
+</body>
+</html>

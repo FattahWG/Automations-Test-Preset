@@ -1,0 +1,27 @@
+# Dependensi
+node_modules/
+pylib/
+
+# Hasil run dan artefak Playwright
+automation/scenarios/
+automation/last-run/
+test-results/
+playwright-report/
+blob-report/
+
+# Rahasia dan sesi login
+.env
+.env.*
+!.env.example
+playwright/.auth/
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor dan OS
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+~$*

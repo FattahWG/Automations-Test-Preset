@@ -1,0 +1,402 @@
+{
+  "TC-AOR-001": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-AUTH-001": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-AUTH-002": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-AUTH-005": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-AUTH-008": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-AUTH-101": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CART-001": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CAT-001": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CAT-101": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CHK-001": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:17:32.127Z",
+    "run": "regression-sprint-2-chk / RunTest1",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CHK-003": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:17:32.127Z",
+    "run": "regression-sprint-2-chk / RunTest1",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-DSH-001": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-ORD-002": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-PRD-001": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-USR-001": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-USR-101": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-USR-102": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-AOR-002": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-AOR-003": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-AUTH-003": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-AUTH-004": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-AUTH-006": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-AUTH-007": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-AUTH-009": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CART-002": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CART-003": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CART-004": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CART-005": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CAT-002": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CAT-003": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CAT-004": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CAT-005": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CAT-006": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CAT-007": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CHK-002": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:17:32.127Z",
+    "run": "regression-sprint-2-chk / RunTest1",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CHK-004": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:17:32.127Z",
+    "run": "regression-sprint-2-chk / RunTest1",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CHK-005": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:17:32.127Z",
+    "run": "regression-sprint-2-chk / RunTest1",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CHK-006": {
+    "result": "Fail",
+    "testedOn": "2026-10-12T20:17:32.127Z",
+    "run": "regression-sprint-2-chk / RunTest1",
+    "failedLayer": "UI",
+    "failureNote": "S01: Error: DEF-001: the app accepts 4 digits and creates the order expect(locator).toHaveText(expected) failed Locator: locator('#err-postalCode') Expected: \"Enter a 5-digit postal code.\"",
+    "owner": "Frontend"
+  },
+  "TC-ORD-001": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-PRD-002": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-PRD-003": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-PRD-004": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-PRD-005": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-USR-002": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-USR-003": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-AOR-101": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-AUTH-102": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CART-101": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-CHK-101": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  },
+  "TC-USR-103": {
+    "result": "Pass",
+    "testedOn": "2026-10-12T20:16:58.333Z",
+    "run": "full / RunTest2",
+    "failedLayer": "",
+    "failureNote": "",
+    "owner": ""
+  }
+}

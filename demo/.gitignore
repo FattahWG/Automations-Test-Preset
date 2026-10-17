@@ -1,0 +1,9 @@
+node_modules/
+automation/scenarios/
+automation/last-run/
+test-results/
+playwright-report/
+blob-report/
+playwright/.auth/
+.env
+test-cases/backup/

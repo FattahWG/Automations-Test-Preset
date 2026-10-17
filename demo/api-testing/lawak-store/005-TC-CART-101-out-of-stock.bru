@@ -1,0 +1,33 @@
+meta {
+  name: TC-CART-101 S01 Out-of-stock product returns 409
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseURL}}/api/cart/items
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{customerToken}}
+}
+
+body:json {
+  { "productId": "p6", "qty": 1 }
+}
+
+assert {
+  res.status: eq 409
+}
+
+tests {
+  test("TC-CART-101 S01: error code is OUT_OF_STOCK", function () {
+    expect(res.getBody().error.code).to.equal("OUT_OF_STOCK");
+  });
+}
+
+docs {
+  Case: TC-CART-101 step 1. Product p6 is Bucket Hat (stock 0).
+}

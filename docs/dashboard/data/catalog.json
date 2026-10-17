@@ -1,0 +1,1748 @@
+{
+  "project": "Lawak Store",
+  "version": "1.0",
+  "generatedAt": "2026-10-12T20:17:11.253Z",
+  "phases": [
+    {
+      "id": "P1",
+      "name": "Phase 1 - MVP storefront",
+      "sprints": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "P2",
+      "name": "Phase 2 - Admin panel",
+      "sprints": [
+        "S3",
+        "S4"
+      ]
+    }
+  ],
+  "sprints": [
+    {
+      "id": "S1",
+      "name": "Sprint 1",
+      "phase": "P1",
+      "goal": "Sign in, registration and catalog"
+    },
+    {
+      "id": "S2",
+      "name": "Sprint 2",
+      "phase": "P1",
+      "goal": "Cart, checkout and customer orders"
+    },
+    {
+      "id": "S3",
+      "name": "Sprint 3",
+      "phase": "P2",
+      "goal": "Admin products and admin orders"
+    },
+    {
+      "id": "S4",
+      "name": "Sprint 4",
+      "phase": "P2",
+      "goal": "Admin users and dashboard"
+    }
+  ],
+  "modules": [
+    {
+      "code": "AUTH",
+      "name": "Authentication"
+    },
+    {
+      "code": "CAT",
+      "name": "Catalog"
+    },
+    {
+      "code": "CART",
+      "name": "Cart"
+    },
+    {
+      "code": "CHK",
+      "name": "Checkout"
+    },
+    {
+      "code": "ORD",
+      "name": "Customer Orders"
+    },
+    {
+      "code": "PRD",
+      "name": "Admin Products"
+    },
+    {
+      "code": "AOR",
+      "name": "Admin Orders"
+    },
+    {
+      "code": "USR",
+      "name": "Admin Users"
+    },
+    {
+      "code": "DSH",
+      "name": "Admin Dashboard"
+    }
+  ],
+  "suites": [
+    {
+      "id": "smoke",
+      "name": "Smoke",
+      "description": "Critical paths only. Shallow and wide. Target under 10 minutes. Run on every deploy.",
+      "rule": "cases tagged smoke"
+    },
+    {
+      "id": "regression",
+      "name": "Regression",
+      "description": "Every UI case. Run nightly and before a release.",
+      "rule": "cases tagged regression"
+    },
+    {
+      "id": "full",
+      "name": "Full Cycle",
+      "description": "Regression UI suite plus the Bruno API suite and the evidence documents. Run at the end of a sprint.",
+      "rule": "all cases"
+    }
+  ],
+  "cases": [
+    {
+      "id": "TC-AUTH-001",
+      "module": "AUTH",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Sign in",
+      "title": "Sign in with the demo admin account",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "smoke",
+        "regression"
+      ],
+      "refs": "US-001",
+      "steps": [
+        {
+          "step": "[UI] Open the Sign in page",
+          "expect": "The Sign in form shows the Email and Password fields"
+        },
+        {
+          "step": "[UI] Enter login@demo.com and Logindemo123, then select Sign in",
+          "expect": "The admin Dashboard opens and the header shows Demo Admin"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@smoke",
+        "@regression",
+        "@auth",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-AUTH-002",
+      "module": "AUTH",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Sign in",
+      "title": "Wrong password shows an error",
+      "type": "Negative",
+      "priority": "High",
+      "suites": [
+        "smoke",
+        "regression"
+      ],
+      "refs": "US-001",
+      "steps": [
+        {
+          "step": "[UI] Open the Sign in page",
+          "expect": "The Sign in form shows"
+        },
+        {
+          "step": "[UI] Enter login@demo.com with a wrong password, then select Sign in",
+          "expect": "The alert says \"Invalid email or password.\" and the user stays signed out"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@smoke",
+        "@regression",
+        "@auth",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-AUTH-003",
+      "module": "AUTH",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Sign in",
+      "title": "Invalid email format is rejected",
+      "type": "Negative",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-001",
+      "steps": [
+        {
+          "step": "[UI] Open the Sign in page",
+          "expect": "The Sign in form shows"
+        },
+        {
+          "step": "[UI] Enter \"not-an-email\" and any password, then select Sign in",
+          "expect": "The Email field shows \"Enter a valid email address.\""
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@auth",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-AUTH-004",
+      "module": "AUTH",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Sign in",
+      "title": "Disabled account cannot sign in",
+      "type": "Negative",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-002",
+      "steps": [
+        {
+          "step": "[UI] Open the Sign in page",
+          "expect": "The Sign in form shows"
+        },
+        {
+          "step": "[UI] Sign in as budi@demo.com (disabled account)",
+          "expect": "The alert says \"This account is disabled. Contact support.\""
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@auth",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-AUTH-005",
+      "module": "AUTH",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Registration",
+      "title": "Register a new customer account",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "smoke",
+        "regression"
+      ],
+      "refs": "US-003",
+      "steps": [
+        {
+          "step": "[UI] Open Create account",
+          "expect": "The registration form shows four fields"
+        },
+        {
+          "step": "[UI] Enter a unique qa-auto email, a valid name and a valid password twice, then submit",
+          "expect": "The Sign in page shows \"Account created. Sign in to continue.\" with the email filled in"
+        },
+        {
+          "step": "[UI] Sign in with the new account",
+          "expect": "The Shop page opens and the header shows the new name"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@smoke",
+        "@regression",
+        "@auth",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-AUTH-006",
+      "module": "AUTH",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Registration",
+      "title": "Register with an existing email is rejected",
+      "type": "Negative",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-003",
+      "steps": [
+        {
+          "step": "[UI] Open Create account",
+          "expect": "The registration form shows"
+        },
+        {
+          "step": "[UI] Register with customer@demo.com",
+          "expect": "The Email field shows \"An account with this email already exists.\""
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@auth",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-AUTH-007",
+      "module": "AUTH",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Registration",
+      "title": "Weak password is rejected",
+      "type": "Negative",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-003 rule R-01",
+      "steps": [
+        {
+          "step": "[UI] Open Create account",
+          "expect": "The registration form shows"
+        },
+        {
+          "step": "[UI] Register with the password \"short\"",
+          "expect": "The Password field shows \"Use at least 8 characters with letters and numbers.\""
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@auth",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-AUTH-008",
+      "module": "AUTH",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Sign out",
+      "title": "Sign out ends the session",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "smoke",
+        "regression"
+      ],
+      "refs": "US-004",
+      "steps": [
+        {
+          "step": "[UI] Sign in as customer@demo.com",
+          "expect": "The header shows Sari Wulandari and Sign out"
+        },
+        {
+          "step": "[UI] Select Sign out",
+          "expect": "The header shows Sign in"
+        },
+        {
+          "step": "[UI] Open My orders by its address",
+          "expect": "The Sign in page opens instead"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@smoke",
+        "@regression",
+        "@auth",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-AUTH-009",
+      "module": "AUTH",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Protected pages",
+      "title": "A protected page asks for sign in, then returns to it",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-004",
+      "steps": [
+        {
+          "step": "[UI] Open the Cart page while signed out",
+          "expect": "The Sign in page opens"
+        },
+        {
+          "step": "[UI] Sign in as customer@demo.com",
+          "expect": "The Cart page opens"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@auth",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CAT-001",
+      "module": "CAT",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Product list",
+      "title": "Shop lists all active products and hides drafts",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "smoke",
+        "regression"
+      ],
+      "refs": "US-010",
+      "steps": [
+        {
+          "step": "[UI] Open the Shop page",
+          "expect": "The count shows \"11 products\""
+        },
+        {
+          "step": "[UI] Look for the draft product Anniversary Jacket",
+          "expect": "Anniversary Jacket is not in the list"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@smoke",
+        "@regression",
+        "@cat",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CAT-002",
+      "module": "CAT",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Product list",
+      "title": "Search finds a product by name",
+      "type": "Positive",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-011",
+      "steps": [
+        {
+          "step": "[UI] Search the shop for \"mug\"",
+          "expect": "The count shows \"1 product\" and the card is Ceramic Coffee Mug"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@cat",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CAT-003",
+      "module": "CAT",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Product list",
+      "title": "Category filter shows only that category",
+      "type": "Positive",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-011",
+      "steps": [
+        {
+          "step": "[UI] Choose the category Home",
+          "expect": "The count shows \"3 products\" and every card says Home"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@cat",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CAT-004",
+      "module": "CAT",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Product list",
+      "title": "Sort by price from low to high",
+      "type": "Positive",
+      "priority": "Low",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-011",
+      "steps": [
+        {
+          "step": "[UI] Choose \"Price: low to high\"",
+          "expect": "The first card is Spicy Cassava Chips at Rp 25.000"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@cat",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CAT-005",
+      "module": "CAT",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Product list",
+      "title": "Search with no result shows an empty state",
+      "type": "Negative",
+      "priority": "Low",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-011",
+      "steps": [
+        {
+          "step": "[UI] Search the shop for \"zzzz\"",
+          "expect": "The page shows \"No products match your search\" and a Clear filters link"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@cat",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CAT-006",
+      "module": "CAT",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Product detail",
+      "title": "Product detail shows the price and stock",
+      "type": "Positive",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-012",
+      "steps": [
+        {
+          "step": "[UI] Open Lawak Classic Tee from the shop",
+          "expect": "The page shows the name, Rp 149.000 and \"In stock\""
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@cat",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CAT-007",
+      "module": "CAT",
+      "sprint": "S1",
+      "layer": "UI",
+      "scenario": "Product detail",
+      "title": "Out-of-stock product cannot be added to the cart",
+      "type": "Negative",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-012",
+      "steps": [
+        {
+          "step": "[UI] Open Bucket Hat",
+          "expect": "The page shows \"Out of stock\" and the button is disabled"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@cat",
+        "@sprint-1",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CART-001",
+      "module": "CART",
+      "sprint": "S2",
+      "layer": "UI",
+      "scenario": "Add to cart",
+      "title": "Add a product to the cart",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "smoke",
+        "regression"
+      ],
+      "refs": "US-020",
+      "steps": [
+        {
+          "step": "[UI] Sign in as a new qa-auto customer and open Ceramic Coffee Mug",
+          "expect": "The cart count in the header is 0"
+        },
+        {
+          "step": "[UI] Select Add to cart",
+          "expect": "The message says \"Added to cart.\" and the cart count is 1"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@smoke",
+        "@regression",
+        "@cart",
+        "@sprint-2",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CART-002",
+      "module": "CART",
+      "sprint": "S2",
+      "layer": "UI",
+      "scenario": "Cart totals",
+      "title": "Changing the quantity updates the totals",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-021 rule R-05",
+      "steps": [
+        {
+          "step": "[UI] Add Lawak Classic Tee to the cart and open the cart",
+          "expect": "Subtotal is Rp 149.000, shipping is Rp 15.000"
+        },
+        {
+          "step": "[UI] Increase the quantity to 2",
+          "expect": "Subtotal is Rp 298.000 and total is Rp 313.000"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@cart",
+        "@sprint-2",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CART-003",
+      "module": "CART",
+      "sprint": "S2",
+      "layer": "UI",
+      "scenario": "Cart totals",
+      "title": "Shipping is free from Rp 300.000",
+      "type": "Positive",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-021 rule R-05",
+      "steps": [
+        {
+          "step": "[UI] Add Batik Pattern Hoodie (Rp 329.000) and open the cart",
+          "expect": "Shipping shows \"Free\" and total is Rp 329.000"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@cart",
+        "@sprint-2",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CART-004",
+      "module": "CART",
+      "sprint": "S2",
+      "layer": "UI",
+      "scenario": "Remove from cart",
+      "title": "Removing the last item shows an empty cart",
+      "type": "Positive",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-022",
+      "steps": [
+        {
+          "step": "[UI] Add Canvas Tote Bag and open the cart",
+          "expect": "The cart shows one line"
+        },
+        {
+          "step": "[UI] Select Remove",
+          "expect": "The page shows \"Your cart is empty\" and the cart count is 0"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@cart",
+        "@sprint-2",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CART-005",
+      "module": "CART",
+      "sprint": "S2",
+      "layer": "UI",
+      "scenario": "Cart totals",
+      "title": "Quantity limit of 10 is enforced",
+      "type": "Negative",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-021 rule R-06",
+      "steps": [
+        {
+          "step": "[UI] Add Jasmine Scented Candle and open the cart",
+          "expect": "The line shows quantity 1"
+        },
+        {
+          "step": "[UI] Type 11 in the quantity box",
+          "expect": "The alert says \"Quantity must be 1 to 10.\" and the quantity stays 1"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@cart",
+        "@sprint-2",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CHK-001",
+      "module": "CHK",
+      "sprint": "S2",
+      "layer": "UI",
+      "scenario": "Payment",
+      "title": "Checkout with the test card creates an order",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "smoke",
+        "regression"
+      ],
+      "refs": "US-030",
+      "steps": [
+        {
+          "step": "[UI] Add Kopi Toraja Beans to the cart and open Checkout",
+          "expect": "The Pay button shows Rp 110.000"
+        },
+        {
+          "step": "[UI] Fill a valid address and card 4242 4242 4242 4242, then select Pay",
+          "expect": "The page says \"Thank you! Your order LS-... is confirmed.\" and the cart count is 0"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@smoke",
+        "@regression",
+        "@chk",
+        "@sprint-2",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CHK-002",
+      "module": "CHK",
+      "sprint": "S2",
+      "layer": "UI",
+      "scenario": "Validation",
+      "title": "Empty required fields are reported",
+      "type": "Negative",
+      "priority": "High",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-030",
+      "steps": [
+        {
+          "step": "[UI] Open Checkout with one item and clear the Full name field",
+          "expect": "The form shows"
+        },
+        {
+          "step": "[UI] Select Pay without filling the form",
+          "expect": "Each empty field shows \"This field is required.\" and no order is created"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@chk",
+        "@sprint-2",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CHK-003",
+      "module": "CHK",
+      "sprint": "S2",
+      "layer": "UI",
+      "scenario": "Payment",
+      "title": "Declined card shows a payment error",
+      "type": "Negative",
+      "priority": "High",
+      "suites": [
+        "smoke",
+        "regression"
+      ],
+      "refs": "US-031",
+      "steps": [
+        {
+          "step": "[UI] Fill Checkout with card 4000 0000 0000 0002 and select Pay",
+          "expect": "The alert says \"The card was declined. Use another card.\""
+        },
+        {
+          "step": "[UI] Open the cart",
+          "expect": "The item is still in the cart"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@smoke",
+        "@regression",
+        "@chk",
+        "@sprint-2",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CHK-004",
+      "module": "CHK",
+      "sprint": "S2",
+      "layer": "UI",
+      "scenario": "Validation",
+      "title": "Invalid card number is rejected",
+      "type": "Negative",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-031",
+      "steps": [
+        {
+          "step": "[UI] Fill Checkout with card 1234 5678 9012 3456 and select Pay",
+          "expect": "The Card number field shows \"Enter a valid 16-digit card number.\""
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@chk",
+        "@sprint-2",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CHK-005",
+      "module": "CHK",
+      "sprint": "S2",
+      "layer": "UI",
+      "scenario": "Validation",
+      "title": "Expired card is rejected",
+      "type": "Negative",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-031",
+      "steps": [
+        {
+          "step": "[UI] Fill Checkout with expiry 01/20 and select Pay",
+          "expect": "The Expiry field shows \"This card has expired.\""
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@chk",
+        "@sprint-2",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-CHK-006",
+      "module": "CHK",
+      "sprint": "S2",
+      "layer": "UI",
+      "scenario": "Validation",
+      "title": "Postal code must have exactly 5 digits",
+      "type": "Negative",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-030 rule R-07 (known defect DEF-001)",
+      "steps": [
+        {
+          "step": "[UI] Fill Checkout with postal code 4011 (4 digits) and select Pay",
+          "expect": "The Postal code field shows \"Enter a 5-digit postal code.\" and no order is created"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@chk",
+        "@sprint-2",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-ORD-001",
+      "module": "ORD",
+      "sprint": "S2",
+      "layer": "UI",
+      "scenario": "Order history",
+      "title": "A new order shows in My orders",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-032",
+      "steps": [
+        {
+          "step": "[UI] Place an order with the test card",
+          "expect": "The confirmation shows the order ID"
+        },
+        {
+          "step": "[UI] Open My orders",
+          "expect": "The list shows that order ID with status Paid"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@regression",
+        "@ord",
+        "@sprint-2",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-ORD-002",
+      "module": "ORD",
+      "sprint": "S2",
+      "layer": "UI",
+      "scenario": "Order privacy",
+      "title": "A customer cannot open another customer's order",
+      "type": "Negative",
+      "priority": "High",
+      "suites": [
+        "smoke",
+        "regression"
+      ],
+      "refs": "US-032 rule R-08",
+      "steps": [
+        {
+          "step": "[UI] Sign in as customer@demo.com and open order LS-10002 (it belongs to Rina)",
+          "expect": "The page shows \"This order does not exist.\""
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@smoke",
+        "@regression",
+        "@ord",
+        "@sprint-2",
+        "@phase-1",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-PRD-001",
+      "module": "PRD",
+      "sprint": "S3",
+      "layer": "UI",
+      "scenario": "Create product",
+      "title": "Admin creates a product",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "smoke",
+        "regression"
+      ],
+      "refs": "US-040",
+      "steps": [
+        {
+          "step": "[UI] Sign in as admin and open Products > Add product",
+          "expect": "The Add product form shows"
+        },
+        {
+          "step": "[UI] Fill a qa-auto product and select Create product",
+          "expect": "The message says \"Product created.\" and the list shows the new SKU"
+        },
+        {
+          "step": "[UI] Search the shop for the new product",
+          "expect": "The shop shows the new product"
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@smoke",
+        "@regression",
+        "@prd",
+        "@sprint-3",
+        "@phase-2",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-PRD-002",
+      "module": "PRD",
+      "sprint": "S3",
+      "layer": "UI",
+      "scenario": "Edit product",
+      "title": "Admin edits a product price",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-041",
+      "steps": [
+        {
+          "step": "[UI] Create a qa-auto product, then select Edit on its row",
+          "expect": "The Edit product form shows the current price"
+        },
+        {
+          "step": "[UI] Change the price to 175000 and save",
+          "expect": "The message says \"Product updated.\" and the row shows Rp 175.000"
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@regression",
+        "@prd",
+        "@sprint-3",
+        "@phase-2",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-PRD-003",
+      "module": "PRD",
+      "sprint": "S3",
+      "layer": "UI",
+      "scenario": "Delete product",
+      "title": "Admin deletes a product",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-042",
+      "steps": [
+        {
+          "step": "[UI] Create a qa-auto product, then select Delete on its row",
+          "expect": "A confirmation dialog asks to delete it"
+        },
+        {
+          "step": "[UI] Confirm the delete",
+          "expect": "The message says \"Product deleted.\" and the row is gone"
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@regression",
+        "@prd",
+        "@sprint-3",
+        "@phase-2",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-PRD-004",
+      "module": "PRD",
+      "sprint": "S3",
+      "layer": "UI",
+      "scenario": "Create product",
+      "title": "Product form rejects invalid data",
+      "type": "Negative",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-040",
+      "steps": [
+        {
+          "step": "[UI] Open Add product and submit an empty form",
+          "expect": "Name, SKU, Price and Stock show their errors"
+        },
+        {
+          "step": "[UI] Use the existing SKU LS-APP-001",
+          "expect": "The SKU field shows \"This SKU is already used.\""
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@regression",
+        "@prd",
+        "@sprint-3",
+        "@phase-2",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-PRD-005",
+      "module": "PRD",
+      "sprint": "S3",
+      "layer": "UI",
+      "scenario": "Edit product",
+      "title": "A draft product is hidden from the shop",
+      "type": "Positive",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-041",
+      "steps": [
+        {
+          "step": "[UI] Create a qa-auto product with status Draft",
+          "expect": "The admin list shows it with status draft"
+        },
+        {
+          "step": "[UI] Search the shop for it",
+          "expect": "The shop shows \"No products match your search\""
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@regression",
+        "@prd",
+        "@sprint-3",
+        "@phase-2",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-AOR-001",
+      "module": "AOR",
+      "sprint": "S3",
+      "layer": "UI",
+      "scenario": "Order list",
+      "title": "A new customer order shows in admin Orders",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "smoke",
+        "regression"
+      ],
+      "refs": "US-050",
+      "steps": [
+        {
+          "step": "[UI] Place an order as a new qa-auto customer",
+          "expect": "The confirmation shows the order ID"
+        },
+        {
+          "step": "[UI] Sign in as admin and open Orders",
+          "expect": "The list shows that order with status Paid and the customer name"
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@smoke",
+        "@regression",
+        "@aor",
+        "@sprint-3",
+        "@phase-2",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-AOR-002",
+      "module": "AOR",
+      "sprint": "S3",
+      "layer": "UI",
+      "scenario": "Order status",
+      "title": "Admin moves an order from Paid to Processing",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-051 rule R-09",
+      "steps": [
+        {
+          "step": "[UI] Place an order as a new qa-auto customer, then open admin Orders",
+          "expect": "The order row offers Processing and Cancelled"
+        },
+        {
+          "step": "[UI] Choose Processing",
+          "expect": "The message says the order is now Processing and the row shows Processing"
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@regression",
+        "@aor",
+        "@sprint-3",
+        "@phase-2",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-AOR-003",
+      "module": "AOR",
+      "sprint": "S3",
+      "layer": "UI",
+      "scenario": "Order status",
+      "title": "Cancelling an order puts the stock back",
+      "type": "Positive",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-051 rule R-10",
+      "steps": [
+        {
+          "step": "[UI] Note the stock of Rattan Coaster Set in admin Products, then order 2 as a qa-auto customer",
+          "expect": "Admin Products shows the stock 2 lower"
+        },
+        {
+          "step": "[UI] Cancel the order in admin Orders",
+          "expect": "The row shows Cancelled and the stock is back to the first value"
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@regression",
+        "@aor",
+        "@sprint-3",
+        "@phase-2",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-USR-001",
+      "module": "USR",
+      "sprint": "S4",
+      "layer": "UI",
+      "scenario": "Access control",
+      "title": "A customer cannot open admin pages",
+      "type": "Negative",
+      "priority": "High",
+      "suites": [
+        "smoke",
+        "regression"
+      ],
+      "refs": "US-060 rule R-11",
+      "steps": [
+        {
+          "step": "[UI] Sign in as customer@demo.com",
+          "expect": "The header has no Admin link"
+        },
+        {
+          "step": "[UI] Open the admin Users page by its address",
+          "expect": "The page says \"You do not have access to this page\""
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@smoke",
+        "@regression",
+        "@usr",
+        "@sprint-4",
+        "@phase-2",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-USR-002",
+      "module": "USR",
+      "sprint": "S4",
+      "layer": "UI",
+      "scenario": "Disable user",
+      "title": "A disabled customer cannot sign in",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-061",
+      "steps": [
+        {
+          "step": "[UI] Register a qa-auto customer, then sign in as admin and open Users",
+          "expect": "The new user shows status active"
+        },
+        {
+          "step": "[UI] Select Disable and confirm",
+          "expect": "The row shows status disabled"
+        },
+        {
+          "step": "[UI] Sign in as the disabled customer",
+          "expect": "The alert says \"This account is disabled. Contact support.\""
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@regression",
+        "@usr",
+        "@sprint-4",
+        "@phase-2",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-USR-003",
+      "module": "USR",
+      "sprint": "S4",
+      "layer": "UI",
+      "scenario": "Access control",
+      "title": "Admin cannot change their own role or status",
+      "type": "Negative",
+      "priority": "Medium",
+      "suites": [
+        "regression"
+      ],
+      "refs": "US-061 rule R-12",
+      "steps": [
+        {
+          "step": "[UI] Sign in as admin and open Users",
+          "expect": "The Demo Admin row has no role list and no Disable button"
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@regression",
+        "@usr",
+        "@sprint-4",
+        "@phase-2",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-DSH-001",
+      "module": "DSH",
+      "sprint": "S4",
+      "layer": "UI",
+      "scenario": "KPIs",
+      "title": "Admin dashboard shows the KPIs",
+      "type": "Positive",
+      "priority": "Medium",
+      "suites": [
+        "smoke",
+        "regression"
+      ],
+      "refs": "US-070",
+      "steps": [
+        {
+          "step": "[UI] Sign in as admin and open Dashboard",
+          "expect": "Revenue, Orders, Customers and Low stock items show numbers, and Recent orders lists 5 rows"
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@smoke",
+        "@regression",
+        "@dsh",
+        "@sprint-4",
+        "@phase-2",
+        "@ui"
+      ],
+      "readiness": "Ready",
+      "tool": "Playwright"
+    },
+    {
+      "id": "TC-AUTH-101",
+      "module": "AUTH",
+      "sprint": "S1",
+      "layer": "API",
+      "scenario": "Sign in",
+      "title": "API: valid sign in returns a token",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "smoke"
+      ],
+      "refs": "US-001",
+      "steps": [
+        {
+          "step": "[API] POST /api/auth/login with the demo admin account",
+          "expect": "HTTP 200, body has token and user.role admin"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@smoke",
+        "@auth",
+        "@sprint-1",
+        "@phase-1",
+        "@api"
+      ],
+      "readiness": "Ready",
+      "tool": "Bruno CLI"
+    },
+    {
+      "id": "TC-AUTH-102",
+      "module": "AUTH",
+      "sprint": "S1",
+      "layer": "API",
+      "scenario": "Sign in",
+      "title": "API: wrong password returns 401",
+      "type": "Negative",
+      "priority": "High",
+      "suites": [],
+      "refs": "US-001",
+      "steps": [
+        {
+          "step": "[API] POST /api/auth/login with a wrong password",
+          "expect": "HTTP 401, error.code INVALID_CREDENTIALS"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@auth",
+        "@sprint-1",
+        "@phase-1",
+        "@api"
+      ],
+      "readiness": "Ready",
+      "tool": "Bruno CLI"
+    },
+    {
+      "id": "TC-CAT-101",
+      "module": "CAT",
+      "sprint": "S1",
+      "layer": "API",
+      "scenario": "Product list",
+      "title": "API: product list returns 11 active products",
+      "type": "Positive",
+      "priority": "High",
+      "suites": [
+        "smoke"
+      ],
+      "refs": "US-010",
+      "steps": [
+        {
+          "step": "[API] GET /api/products",
+          "expect": "HTTP 200, total 11, no product with status draft"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@smoke",
+        "@cat",
+        "@sprint-1",
+        "@phase-1",
+        "@api"
+      ],
+      "readiness": "Ready",
+      "tool": "Bruno CLI"
+    },
+    {
+      "id": "TC-CART-101",
+      "module": "CART",
+      "sprint": "S2",
+      "layer": "API",
+      "scenario": "Add to cart",
+      "title": "API: out-of-stock product returns 409",
+      "type": "Negative",
+      "priority": "Medium",
+      "suites": [],
+      "refs": "US-020",
+      "steps": [
+        {
+          "step": "[API] POST /api/cart/items with productId p6 (Bucket Hat)",
+          "expect": "HTTP 409, error.code OUT_OF_STOCK"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@cart",
+        "@sprint-2",
+        "@phase-1",
+        "@api"
+      ],
+      "readiness": "Ready",
+      "tool": "Bruno CLI"
+    },
+    {
+      "id": "TC-CHK-101",
+      "module": "CHK",
+      "sprint": "S2",
+      "layer": "API",
+      "scenario": "Payment",
+      "title": "API: declined card returns 402",
+      "type": "Negative",
+      "priority": "High",
+      "suites": [],
+      "refs": "US-031",
+      "steps": [
+        {
+          "step": "[API] POST /api/orders with card 4000000000000002",
+          "expect": "HTTP 402, error.code PAYMENT_DECLINED"
+        }
+      ],
+      "phase": "P1",
+      "tags": [
+        "@chk",
+        "@sprint-2",
+        "@phase-1",
+        "@api"
+      ],
+      "readiness": "Ready",
+      "tool": "Bruno CLI"
+    },
+    {
+      "id": "TC-AOR-101",
+      "module": "AOR",
+      "sprint": "S3",
+      "layer": "API",
+      "scenario": "Order status",
+      "title": "API: invalid status change returns 409",
+      "type": "Negative",
+      "priority": "Medium",
+      "suites": [],
+      "refs": "US-051 rule R-09",
+      "steps": [
+        {
+          "step": "[API] PATCH /api/admin/orders/LS-10001 with status Processing (order is Delivered)",
+          "expect": "HTTP 409, error.code INVALID_TRANSITION"
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@aor",
+        "@sprint-3",
+        "@phase-2",
+        "@api"
+      ],
+      "readiness": "Ready",
+      "tool": "Bruno CLI"
+    },
+    {
+      "id": "TC-USR-101",
+      "module": "USR",
+      "sprint": "S4",
+      "layer": "API",
+      "scenario": "Access control",
+      "title": "API: admin endpoint without a token returns 401",
+      "type": "Negative",
+      "priority": "High",
+      "suites": [
+        "smoke"
+      ],
+      "refs": "US-060 rule R-11",
+      "steps": [
+        {
+          "step": "[API] GET /api/admin/stats without a token",
+          "expect": "HTTP 401, error.code UNAUTHORIZED"
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@smoke",
+        "@usr",
+        "@sprint-4",
+        "@phase-2",
+        "@api"
+      ],
+      "readiness": "Ready",
+      "tool": "Bruno CLI"
+    },
+    {
+      "id": "TC-USR-102",
+      "module": "USR",
+      "sprint": "S4",
+      "layer": "API",
+      "scenario": "Access control",
+      "title": "API: admin endpoint as a customer returns 403",
+      "type": "Negative",
+      "priority": "High",
+      "suites": [
+        "smoke"
+      ],
+      "refs": "US-060 rule R-11",
+      "steps": [
+        {
+          "step": "[API] GET /api/admin/stats with a customer token",
+          "expect": "HTTP 403, error.code FORBIDDEN"
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@smoke",
+        "@usr",
+        "@sprint-4",
+        "@phase-2",
+        "@api"
+      ],
+      "readiness": "Ready",
+      "tool": "Bruno CLI"
+    },
+    {
+      "id": "TC-USR-103",
+      "module": "USR",
+      "sprint": "S4",
+      "layer": "API",
+      "scenario": "Access control",
+      "title": "API: admin cannot change their own role",
+      "type": "Negative",
+      "priority": "Medium",
+      "suites": [],
+      "refs": "US-061 rule R-12",
+      "steps": [
+        {
+          "step": "[API] PATCH /api/admin/users/u1 with role customer as the admin",
+          "expect": "HTTP 409, error.code SELF_CHANGE"
+        }
+      ],
+      "phase": "P2",
+      "tags": [
+        "@usr",
+        "@sprint-4",
+        "@phase-2",
+        "@api"
+      ],
+      "readiness": "Ready",
+      "tool": "Bruno CLI"
+    }
+  ]
+}

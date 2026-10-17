@@ -1,0 +1,33 @@
+meta {
+  name: TC-AOR-101 S01 Invalid status change returns 409
+  type: http
+  seq: 9
+}
+
+patch {
+  url: {{baseURL}}/api/admin/orders/LS-10001
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{adminToken}}
+}
+
+body:json {
+  { "status": "Processing" }
+}
+
+assert {
+  res.status: eq 409
+}
+
+tests {
+  test("TC-AOR-101 S01: error code is INVALID_TRANSITION", function () {
+    expect(res.getBody().error.code).to.equal("INVALID_TRANSITION");
+  });
+}
+
+docs {
+  Case: TC-AOR-101 step 1. LS-10001 is Delivered, which is a final status.
+}

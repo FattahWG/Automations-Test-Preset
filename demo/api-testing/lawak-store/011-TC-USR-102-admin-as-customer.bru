@@ -1,0 +1,32 @@
+meta {
+  name: TC-USR-102 S01 Admin endpoint as a customer returns 403
+  type: http
+  seq: 11
+  tags: [
+    smoke
+  ]
+}
+
+get {
+  url: {{baseURL}}/api/admin/stats
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{customerToken}}
+}
+
+assert {
+  res.status: eq 403
+}
+
+tests {
+  test("TC-USR-102 S01: error code is FORBIDDEN", function () {
+    expect(res.getBody().error.code).to.equal("FORBIDDEN");
+  });
+}
+
+docs {
+  Case: TC-USR-102 step 1
+}

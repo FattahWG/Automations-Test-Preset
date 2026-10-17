@@ -1,0 +1,33 @@
+meta {
+  name: TC-USR-103 S01 Admin cannot change their own role
+  type: http
+  seq: 12
+}
+
+patch {
+  url: {{baseURL}}/api/admin/users/u1
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{adminToken}}
+}
+
+body:json {
+  { "role": "customer" }
+}
+
+assert {
+  res.status: eq 409
+}
+
+tests {
+  test("TC-USR-103 S01: error code is SELF_CHANGE", function () {
+    expect(res.getBody().error.code).to.equal("SELF_CHANGE");
+  });
+}
+
+docs {
+  Case: TC-USR-103 step 1
+}

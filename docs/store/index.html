@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://fonts.googleapis.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Lawak Store</title>
+  <meta name="description" content="Lawak Store is a demo shop with an admin panel, built as the system under test for a QA automation showcase.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23335fff'/%3E%3Ctext x='16' y='21' font-family='Arial' font-weight='700' font-size='13' fill='white' text-anchor='middle'%3ELS%3C/text%3E%3C/svg%3E">
+  <meta name="theme-color" content="#f5f1ee">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/app.css?v=4">
+</head>
+<body>
+  <div class="demo-banner" role="note">
+    <div class="wrap">
+      <span><strong>Demo shop.</strong> No real payments. Data stays in this browser.</span>
+      <span class="row"><a href="../">QA showcase</a><a href="../dashboard/">Test dashboard</a><a href="https://fattahwg.github.io/">Portfolio</a><button type="button" class="btn small" id="reset-demo">Reset demo data</button></span>
+    </div>
+  </div>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="#/" aria-label="Lawak Store home"><span class="brand-mark" aria-hidden="true">LS</span>Lawak Store</a>
+      <nav class="nav" id="nav" aria-label="Main"></nav>
+    </div>
+  </header>
+  <main class="wrap" id="app" tabindex="-1"></main>
+  <footer class="site">
+    <div class="wrap">
+      <span>Lawak Store demo &middot; system under test for the QA automation showcase</span>
+      <span>Test card <code>4242 4242 4242 4242</code> &middot; decline card <code>4000 0000 0000 0002</code></span>
+    </div>
+  </footer>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <dialog id="confirm-dialog" aria-labelledby="confirm-title">
+    <form method="dialog" class="stack">
+      <h2 id="confirm-title">Are you sure?</h2>
+      <p id="confirm-text" class="muted"></p>
+      <div class="row" style="justify-content:flex-end">
+        <button class="btn" value="cancel">Cancel</button>
+        <button class="btn primary" value="confirm" id="confirm-ok">Confirm</button>
+      </div>
+    </form>
+  </dialog>
+  <script src="js/config.js"></script>
+  <script src="js/backend.js"></script>
+  <script type="module" src="js/app.js?v=4"></script>
+</body>
+</html>

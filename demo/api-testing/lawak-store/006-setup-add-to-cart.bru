@@ -1,0 +1,23 @@
+meta {
+  name: Setup - add Spicy Cassava Chips to the cart
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseURL}}/api/cart/items
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{customerToken}}
+}
+
+body:json {
+  { "productId": "p11", "qty": 1 }
+}
+
+assert {
+  res.status: eq 201
+}

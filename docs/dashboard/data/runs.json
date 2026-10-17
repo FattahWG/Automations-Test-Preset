@@ -1,0 +1,1598 @@
+[
+  {
+    "key": "regression-sprint-2-chk/RunTest1",
+    "scenario": "regression-sprint-2-chk",
+    "run": "RunTest1",
+    "suite": "regression",
+    "filters": {
+      "sprint": "2",
+      "phase": null,
+      "module": "chk"
+    },
+    "command": "node scripts/run-suite.js --suite regression --sprint 2 --module chk",
+    "browser": "Microsoft Edge (msedge)",
+    "startedAt": "2026-10-12T20:17:11.187Z",
+    "finishedAt": "2026-10-12T20:17:32.127Z",
+    "totals": {
+      "cases": 6,
+      "pass": 5,
+      "fail": 1,
+      "skipped": 0
+    },
+    "evidence": "documents/evidence/Evidence_regression-sprint-2-chk_RunTest1.docx",
+    "cases": [
+      {
+        "id": "TC-CHK-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 2787,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1037,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1323,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1309,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1212,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-006",
+        "status": "Fail",
+        "layer": "UI",
+        "durationMs": 8372,
+        "failedStep": "S01 Pay with postal code 4011",
+        "note": "Error: DEF-001: the app accepts 4 digits and creates the order expect(locator).toHaveText(expected) failed Locator: locator('#err-postalCode') Expected: \"Enter a 5-digit postal code.\"",
+        "issue": "DEF-001: a 4-digit postal code is accepted. This case fails until the defect is fixed."
+      }
+    ]
+  },
+  {
+    "key": "full/RunTest2",
+    "scenario": "full",
+    "run": "RunTest2",
+    "suite": "full",
+    "filters": {
+      "sprint": null,
+      "phase": null,
+      "module": null
+    },
+    "command": "node scripts/run-suite.js --suite full",
+    "browser": "Microsoft Edge (msedge)",
+    "startedAt": "2026-10-12T20:15:54.175Z",
+    "finishedAt": "2026-10-12T20:16:58.333Z",
+    "totals": {
+      "cases": 50,
+      "pass": 49,
+      "fail": 1,
+      "skipped": 0
+    },
+    "evidence": "documents/evidence/Evidence_full_RunTest2.docx",
+    "cases": [
+      {
+        "id": "TC-AOR-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1834,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AOR-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1090,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AOR-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1403,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AOR-101",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 149,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 841,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 744,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 791,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 736,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1127,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-006",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 875,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-007",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 965,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-008",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1217,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-009",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 783,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-101",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 459,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-102",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 154,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 900,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 947,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 738,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 812,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 916,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-101",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 175,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 810,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 684,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 740,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 759,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 579,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-006",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 731,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-007",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 726,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-101",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 171,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1209,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1015,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1239,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1177,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1294,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-006",
+        "status": "Fail",
+        "layer": "UI",
+        "durationMs": 8551,
+        "failedStep": "S01 Pay with postal code 4011",
+        "note": "Error: DEF-001: the app accepts 4 digits and creates the order expect(locator).toHaveText(expected) failed Locator: locator('#err-postalCode') Expected: \"Enter a 5-digit postal code.\"",
+        "issue": "DEF-001: a 4-digit postal code is accepted. This case fails until the defect is fixed."
+      },
+      {
+        "id": "TC-CHK-101",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 171,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-DSH-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 783,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-ORD-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 2009,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-ORD-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1025,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1501,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1036,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 867,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1062,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1205,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 954,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1354,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 750,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-101",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 171,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-102",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 169,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-103",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 169,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      }
+    ]
+  },
+  {
+    "key": "full/RunTest1",
+    "scenario": "full",
+    "run": "RunTest1",
+    "suite": "full",
+    "filters": {
+      "sprint": null,
+      "phase": null,
+      "module": null
+    },
+    "command": "node scripts/run-suite.js --suite full",
+    "browser": "Microsoft Edge (msedge)",
+    "startedAt": "2026-10-12T20:10:27.734Z",
+    "finishedAt": "2026-10-12T20:11:27.861Z",
+    "totals": {
+      "cases": 50,
+      "pass": 49,
+      "fail": 1,
+      "skipped": 0
+    },
+    "evidence": "documents/evidence/Evidence_full_RunTest1.docx",
+    "cases": [
+      {
+        "id": "TC-AOR-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1763,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AOR-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 831,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AOR-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1223,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AOR-101",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 149,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 819,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 818,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 852,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 755,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1109,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-006",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 801,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-007",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 761,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-008",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1090,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-009",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 748,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-101",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 367,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-102",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 115,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 836,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 829,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 673,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 834,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 838,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-101",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 154,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 760,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 669,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 649,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 743,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 528,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-006",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 715,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-007",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 707,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-101",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 132,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1231,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1145,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1871,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1430,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1304,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-006",
+        "status": "Fail",
+        "layer": "UI",
+        "durationMs": 8378,
+        "failedStep": "S01 Pay with postal code 4011",
+        "note": "Error: DEF-001: the app accepts 4 digits and creates the order expect(locator).toHaveText(expected) failed Locator: locator('#err-postalCode') Expected: \"Enter a 5-digit postal code.\"",
+        "issue": "DEF-001: a 4-digit postal code is accepted. This case fails until the defect is fixed."
+      },
+      {
+        "id": "TC-CHK-101",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 131,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-DSH-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 722,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-ORD-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1845,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-ORD-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 733,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1392,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1031,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 830,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1026,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1111,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 989,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1357,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 714,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-101",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 156,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-102",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 107,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-103",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 137,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      }
+    ]
+  },
+  {
+    "key": "regression/RunTest1",
+    "scenario": "regression",
+    "run": "RunTest1",
+    "suite": "regression",
+    "filters": {
+      "sprint": null,
+      "phase": null,
+      "module": null
+    },
+    "command": "node scripts/run-suite.js --suite regression",
+    "browser": "Microsoft Edge (msedge)",
+    "startedAt": "2026-10-12T20:09:28.944Z",
+    "finishedAt": "2026-10-12T20:10:18.248Z",
+    "totals": {
+      "cases": 41,
+      "pass": 40,
+      "fail": 1,
+      "skipped": 0
+    },
+    "evidence": "documents/evidence/Evidence_regression_RunTest1.docx",
+    "cases": [
+      {
+        "id": "TC-AOR-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1534,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AOR-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 762,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AOR-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1050,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 739,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 668,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 677,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 680,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1024,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-006",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 716,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-007",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 761,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-008",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1000,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-009",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 731,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 810,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 804,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 596,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 788,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 815,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 699,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 706,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 681,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 775,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 544,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-006",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 718,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-007",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 694,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1219,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 999,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1287,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1097,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1142,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-006",
+        "status": "Fail",
+        "layer": "UI",
+        "durationMs": 8109,
+        "failedStep": "S01 Pay with postal code 4011",
+        "note": "Error: DEF-001: the app accepts 4 digits and creates the order expect(locator).toHaveText(expected) failed Locator: locator('#err-postalCode') Expected: \"Enter a 5-digit postal code.\"",
+        "issue": "DEF-001: a 4-digit postal code is accepted. This case fails until the defect is fixed."
+      },
+      {
+        "id": "TC-DSH-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 666,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-ORD-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1552,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-ORD-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 613,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1227,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 951,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 721,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-004",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1025,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1109,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 812,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1231,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 649,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      }
+    ]
+  },
+  {
+    "key": "smoke/RunTest1",
+    "scenario": "smoke",
+    "run": "RunTest1",
+    "suite": "smoke",
+    "filters": {
+      "sprint": null,
+      "phase": null,
+      "module": null
+    },
+    "command": "node scripts/run-suite.js --suite smoke",
+    "browser": "Microsoft Edge (msedge)",
+    "startedAt": "2026-10-12T20:05:12.028Z",
+    "finishedAt": "2026-10-12T20:05:32.779Z",
+    "totals": {
+      "cases": 17,
+      "pass": 17,
+      "fail": 0,
+      "skipped": 0
+    },
+    "evidence": "documents/evidence/Evidence_smoke_RunTest1.docx",
+    "cases": [
+      {
+        "id": "TC-AOR-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1487,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 815,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 700,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-005",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1018,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-008",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1028,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-AUTH-101",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 369,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CART-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 817,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 719,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CAT-101",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 149,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1093,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-CHK-003",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1106,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-DSH-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 690,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-ORD-002",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 584,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-PRD-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 1210,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-001",
+        "status": "Pass",
+        "layer": "UI",
+        "durationMs": 792,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-101",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 151,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      },
+      {
+        "id": "TC-USR-102",
+        "status": "Pass",
+        "layer": "API",
+        "durationMs": 139,
+        "failedStep": null,
+        "note": null,
+        "issue": null
+      }
+    ]
+  }
+]

@@ -1,0 +1,27 @@
+meta {
+  name: Setup - sign in as customer
+  type: http
+  seq: 4
+  tags: [
+    smoke
+    setup
+  ]
+}
+
+post {
+  url: {{baseURL}}/api/auth/login
+  body: json
+  auth: none
+}
+
+body:json {
+  { "email": "{{customerEmail}}", "password": "{{process.env.CUSTOMER_PASSWORD}}" }
+}
+
+assert {
+  res.status: eq 200
+}
+
+script:post-response {
+  bru.setVar("customerToken", res.getBody().token);
+}

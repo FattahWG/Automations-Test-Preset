@@ -1,0 +1,30 @@
+meta {
+  name: TC-CAT-101 S01 Product list returns 11 active products
+  type: http
+  seq: 3
+  tags: [
+    smoke
+  ]
+}
+
+get {
+  url: {{baseURL}}/api/products
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+tests {
+  test("TC-CAT-101 S01: 11 products and no draft", function () {
+    const body = res.getBody();
+    expect(body.total).to.equal(11);
+    expect(body.products.filter((p) => p.status !== "active").length).to.equal(0);
+  });
+}
+
+docs {
+  Case: TC-CAT-101 step 1
+}

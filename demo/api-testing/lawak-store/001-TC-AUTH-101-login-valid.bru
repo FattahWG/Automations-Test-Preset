@@ -1,0 +1,37 @@
+meta {
+  name: TC-AUTH-101 S01 Valid sign in returns a token
+  type: http
+  seq: 1
+  tags: [
+    smoke
+  ]
+}
+
+post {
+  url: {{baseURL}}/api/auth/login
+  body: json
+  auth: none
+}
+
+body:json {
+  { "email": "{{adminEmail}}", "password": "{{process.env.ADMIN_PASSWORD}}" }
+}
+
+assert {
+  res.status: eq 200
+}
+
+script:post-response {
+  bru.setVar("adminToken", res.getBody().token);
+}
+
+tests {
+  test("TC-AUTH-101 S01: token and admin role are returned", function () {
+    expect(res.getBody().token).to.be.a("string");
+    expect(res.getBody().user.role).to.equal("admin");
+  });
+}
+
+docs {
+  Case: TC-AUTH-101 step 1
+}

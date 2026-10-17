@@ -1,0 +1,19 @@
+meta {
+  name: Cleanup - remove Spicy Cassava Chips from the cart
+  type: http
+  seq: 8
+}
+
+delete {
+  url: {{baseURL}}/api/cart/items/p11
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{customerToken}}
+}
+
+assert {
+  res.status: eq 200
+}

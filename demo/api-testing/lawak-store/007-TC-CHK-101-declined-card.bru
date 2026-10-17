@@ -1,0 +1,36 @@
+meta {
+  name: TC-CHK-101 S01 Declined card returns 402
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseURL}}/api/orders
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{customerToken}}
+}
+
+body:json {
+  {
+    "customer": { "name": "QA Auto Buyer", "email": "qa-auto@example.test", "phone": "081234567890", "address": "Jl. Asia Afrika No. 8", "city": "Bandung", "postalCode": "40111" },
+    "payment": { "cardNumber": "4000000000000002", "cardName": "QA AUTO", "expiry": "12/30", "cvc": "123" }
+  }
+}
+
+assert {
+  res.status: eq 402
+}
+
+tests {
+  test("TC-CHK-101 S01: error code is PAYMENT_DECLINED", function () {
+    expect(res.getBody().error.code).to.equal("PAYMENT_DECLINED");
+  });
+}
+
+docs {
+  Case: TC-CHK-101 step 1
+}

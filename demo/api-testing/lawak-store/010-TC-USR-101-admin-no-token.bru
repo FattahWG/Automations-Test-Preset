@@ -1,0 +1,28 @@
+meta {
+  name: TC-USR-101 S01 Admin endpoint without a token returns 401
+  type: http
+  seq: 10
+  tags: [
+    smoke
+  ]
+}
+
+get {
+  url: {{baseURL}}/api/admin/stats
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 401
+}
+
+tests {
+  test("TC-USR-101 S01: error code is UNAUTHORIZED", function () {
+    expect(res.getBody().error.code).to.equal("UNAUTHORIZED");
+  });
+}
+
+docs {
+  Case: TC-USR-101 step 1
+}

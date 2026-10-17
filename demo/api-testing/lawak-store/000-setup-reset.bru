@@ -1,0 +1,23 @@
+meta {
+  name: Setup - reset demo data
+  type: http
+  seq: 0
+  tags: [
+    smoke
+    setup
+  ]
+}
+
+post {
+  url: {{baseURL}}/api/demo/reset
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}
+
+docs {
+  Setup request. Starts the API suite from the seed data.
+}

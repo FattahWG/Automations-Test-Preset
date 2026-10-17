@@ -1,0 +1,17 @@
+{
+  "name": "lawak-store-qa-demo",
+  "private": true,
+  "description": "Playwright and Bruno CLI automation for the Lawak Store demo shop.",
+  "scripts": {
+    "serve": "node server/server.js",
+    "test": "playwright test",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:regression": "playwright test --grep @regression",
+    "api": "cd api-testing/lawak-store && bru run --env local -r",
+    "suite": "node scripts/run-suite.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.0",
+    "@usebruno/cli": "4.2.1"
+  }
+}

@@ -1,0 +1,988 @@
+{
+  "TC-AUTH-001": {
+    "title": "Sign in with the demo admin account",
+    "steps": [
+      {
+        "step": "[UI] Open the Sign in page",
+        "expect": "The Sign in form shows the Email and Password fields"
+      },
+      {
+        "step": "[UI] Enter login@demo.com and Logindemo123, then select Sign in",
+        "expect": "The admin Dashboard opens and the header shows Demo Admin"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@regression",
+      "@auth",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-AUTH-002": {
+    "title": "Wrong password shows an error",
+    "steps": [
+      {
+        "step": "[UI] Open the Sign in page",
+        "expect": "The Sign in form shows"
+      },
+      {
+        "step": "[UI] Enter login@demo.com with a wrong password, then select Sign in",
+        "expect": "The alert says \"Invalid email or password.\" and the user stays signed out"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@regression",
+      "@auth",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-AUTH-003": {
+    "title": "Invalid email format is rejected",
+    "steps": [
+      {
+        "step": "[UI] Open the Sign in page",
+        "expect": "The Sign in form shows"
+      },
+      {
+        "step": "[UI] Enter \"not-an-email\" and any password, then select Sign in",
+        "expect": "The Email field shows \"Enter a valid email address.\""
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@auth",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-AUTH-004": {
+    "title": "Disabled account cannot sign in",
+    "steps": [
+      {
+        "step": "[UI] Open the Sign in page",
+        "expect": "The Sign in form shows"
+      },
+      {
+        "step": "[UI] Sign in as budi@demo.com (disabled account)",
+        "expect": "The alert says \"This account is disabled. Contact support.\""
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@auth",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-AUTH-005": {
+    "title": "Register a new customer account",
+    "steps": [
+      {
+        "step": "[UI] Open Create account",
+        "expect": "The registration form shows four fields"
+      },
+      {
+        "step": "[UI] Enter a unique qa-auto email, a valid name and a valid password twice, then submit",
+        "expect": "The Sign in page shows \"Account created. Sign in to continue.\" with the email filled in"
+      },
+      {
+        "step": "[UI] Sign in with the new account",
+        "expect": "The Shop page opens and the header shows the new name"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@regression",
+      "@auth",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-AUTH-006": {
+    "title": "Register with an existing email is rejected",
+    "steps": [
+      {
+        "step": "[UI] Open Create account",
+        "expect": "The registration form shows"
+      },
+      {
+        "step": "[UI] Register with customer@demo.com",
+        "expect": "The Email field shows \"An account with this email already exists.\""
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@auth",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-AUTH-007": {
+    "title": "Weak password is rejected",
+    "steps": [
+      {
+        "step": "[UI] Open Create account",
+        "expect": "The registration form shows"
+      },
+      {
+        "step": "[UI] Register with the password \"short\"",
+        "expect": "The Password field shows \"Use at least 8 characters with letters and numbers.\""
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@auth",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-AUTH-008": {
+    "title": "Sign out ends the session",
+    "steps": [
+      {
+        "step": "[UI] Sign in as customer@demo.com",
+        "expect": "The header shows Sari Wulandari and Sign out"
+      },
+      {
+        "step": "[UI] Select Sign out",
+        "expect": "The header shows Sign in"
+      },
+      {
+        "step": "[UI] Open My orders by its address",
+        "expect": "The Sign in page opens instead"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@regression",
+      "@auth",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-AUTH-009": {
+    "title": "A protected page asks for sign in, then returns to it",
+    "steps": [
+      {
+        "step": "[UI] Open the Cart page while signed out",
+        "expect": "The Sign in page opens"
+      },
+      {
+        "step": "[UI] Sign in as customer@demo.com",
+        "expect": "The Cart page opens"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@auth",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CAT-001": {
+    "title": "Shop lists all active products and hides drafts",
+    "steps": [
+      {
+        "step": "[UI] Open the Shop page",
+        "expect": "The count shows \"11 products\""
+      },
+      {
+        "step": "[UI] Look for the draft product Anniversary Jacket",
+        "expect": "Anniversary Jacket is not in the list"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@regression",
+      "@cat",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CAT-002": {
+    "title": "Search finds a product by name",
+    "steps": [
+      {
+        "step": "[UI] Search the shop for \"mug\"",
+        "expect": "The count shows \"1 product\" and the card is Ceramic Coffee Mug"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@cat",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CAT-003": {
+    "title": "Category filter shows only that category",
+    "steps": [
+      {
+        "step": "[UI] Choose the category Home",
+        "expect": "The count shows \"3 products\" and every card says Home"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@cat",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CAT-004": {
+    "title": "Sort by price from low to high",
+    "steps": [
+      {
+        "step": "[UI] Choose \"Price: low to high\"",
+        "expect": "The first card is Spicy Cassava Chips at Rp 25.000"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@cat",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CAT-005": {
+    "title": "Search with no result shows an empty state",
+    "steps": [
+      {
+        "step": "[UI] Search the shop for \"zzzz\"",
+        "expect": "The page shows \"No products match your search\" and a Clear filters link"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@cat",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CAT-006": {
+    "title": "Product detail shows the price and stock",
+    "steps": [
+      {
+        "step": "[UI] Open Lawak Classic Tee from the shop",
+        "expect": "The page shows the name, Rp 149.000 and \"In stock\""
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@cat",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CAT-007": {
+    "title": "Out-of-stock product cannot be added to the cart",
+    "steps": [
+      {
+        "step": "[UI] Open Bucket Hat",
+        "expect": "The page shows \"Out of stock\" and the button is disabled"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@cat",
+      "@sprint-1",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CART-001": {
+    "title": "Add a product to the cart",
+    "steps": [
+      {
+        "step": "[UI] Sign in as a new qa-auto customer and open Ceramic Coffee Mug",
+        "expect": "The cart count in the header is 0"
+      },
+      {
+        "step": "[UI] Select Add to cart",
+        "expect": "The message says \"Added to cart.\" and the cart count is 1"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@regression",
+      "@cart",
+      "@sprint-2",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CART-002": {
+    "title": "Changing the quantity updates the totals",
+    "steps": [
+      {
+        "step": "[UI] Add Lawak Classic Tee to the cart and open the cart",
+        "expect": "Subtotal is Rp 149.000, shipping is Rp 15.000"
+      },
+      {
+        "step": "[UI] Increase the quantity to 2",
+        "expect": "Subtotal is Rp 298.000 and total is Rp 313.000"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@cart",
+      "@sprint-2",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CART-003": {
+    "title": "Shipping is free from Rp 300.000",
+    "steps": [
+      {
+        "step": "[UI] Add Batik Pattern Hoodie (Rp 329.000) and open the cart",
+        "expect": "Shipping shows \"Free\" and total is Rp 329.000"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@cart",
+      "@sprint-2",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CART-004": {
+    "title": "Removing the last item shows an empty cart",
+    "steps": [
+      {
+        "step": "[UI] Add Canvas Tote Bag and open the cart",
+        "expect": "The cart shows one line"
+      },
+      {
+        "step": "[UI] Select Remove",
+        "expect": "The page shows \"Your cart is empty\" and the cart count is 0"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@cart",
+      "@sprint-2",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CART-005": {
+    "title": "Quantity limit of 10 is enforced",
+    "steps": [
+      {
+        "step": "[UI] Add Jasmine Scented Candle and open the cart",
+        "expect": "The line shows quantity 1"
+      },
+      {
+        "step": "[UI] Type 11 in the quantity box",
+        "expect": "The alert says \"Quantity must be 1 to 10.\" and the quantity stays 1"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@cart",
+      "@sprint-2",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CHK-001": {
+    "title": "Checkout with the test card creates an order",
+    "steps": [
+      {
+        "step": "[UI] Add Kopi Toraja Beans to the cart and open Checkout",
+        "expect": "The Pay button shows Rp 110.000"
+      },
+      {
+        "step": "[UI] Fill a valid address and card 4242 4242 4242 4242, then select Pay",
+        "expect": "The page says \"Thank you! Your order LS-... is confirmed.\" and the cart count is 0"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@regression",
+      "@chk",
+      "@sprint-2",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CHK-002": {
+    "title": "Empty required fields are reported",
+    "steps": [
+      {
+        "step": "[UI] Open Checkout with one item and clear the Full name field",
+        "expect": "The form shows"
+      },
+      {
+        "step": "[UI] Select Pay without filling the form",
+        "expect": "Each empty field shows \"This field is required.\" and no order is created"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@chk",
+      "@sprint-2",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CHK-003": {
+    "title": "Declined card shows a payment error",
+    "steps": [
+      {
+        "step": "[UI] Fill Checkout with card 4000 0000 0000 0002 and select Pay",
+        "expect": "The alert says \"The card was declined. Use another card.\""
+      },
+      {
+        "step": "[UI] Open the cart",
+        "expect": "The item is still in the cart"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@regression",
+      "@chk",
+      "@sprint-2",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CHK-004": {
+    "title": "Invalid card number is rejected",
+    "steps": [
+      {
+        "step": "[UI] Fill Checkout with card 1234 5678 9012 3456 and select Pay",
+        "expect": "The Card number field shows \"Enter a valid 16-digit card number.\""
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@chk",
+      "@sprint-2",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CHK-005": {
+    "title": "Expired card is rejected",
+    "steps": [
+      {
+        "step": "[UI] Fill Checkout with expiry 01/20 and select Pay",
+        "expect": "The Expiry field shows \"This card has expired.\""
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@chk",
+      "@sprint-2",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-CHK-006": {
+    "title": "Postal code must have exactly 5 digits",
+    "steps": [
+      {
+        "step": "[UI] Fill Checkout with postal code 4011 (4 digits) and select Pay",
+        "expect": "The Postal code field shows \"Enter a 5-digit postal code.\" and no order is created"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@chk",
+      "@sprint-2",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-ORD-001": {
+    "title": "A new order shows in My orders",
+    "steps": [
+      {
+        "step": "[UI] Place an order with the test card",
+        "expect": "The confirmation shows the order ID"
+      },
+      {
+        "step": "[UI] Open My orders",
+        "expect": "The list shows that order ID with status Paid"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@ord",
+      "@sprint-2",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-ORD-002": {
+    "title": "A customer cannot open another customer's order",
+    "steps": [
+      {
+        "step": "[UI] Sign in as customer@demo.com and open order LS-10002 (it belongs to Rina)",
+        "expect": "The page shows \"This order does not exist.\""
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@regression",
+      "@ord",
+      "@sprint-2",
+      "@phase-1",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-PRD-001": {
+    "title": "Admin creates a product",
+    "steps": [
+      {
+        "step": "[UI] Sign in as admin and open Products > Add product",
+        "expect": "The Add product form shows"
+      },
+      {
+        "step": "[UI] Fill a qa-auto product and select Create product",
+        "expect": "The message says \"Product created.\" and the list shows the new SKU"
+      },
+      {
+        "step": "[UI] Search the shop for the new product",
+        "expect": "The shop shows the new product"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@regression",
+      "@prd",
+      "@sprint-3",
+      "@phase-2",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-PRD-002": {
+    "title": "Admin edits a product price",
+    "steps": [
+      {
+        "step": "[UI] Create a qa-auto product, then select Edit on its row",
+        "expect": "The Edit product form shows the current price"
+      },
+      {
+        "step": "[UI] Change the price to 175000 and save",
+        "expect": "The message says \"Product updated.\" and the row shows Rp 175.000"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@prd",
+      "@sprint-3",
+      "@phase-2",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-PRD-003": {
+    "title": "Admin deletes a product",
+    "steps": [
+      {
+        "step": "[UI] Create a qa-auto product, then select Delete on its row",
+        "expect": "A confirmation dialog asks to delete it"
+      },
+      {
+        "step": "[UI] Confirm the delete",
+        "expect": "The message says \"Product deleted.\" and the row is gone"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@prd",
+      "@sprint-3",
+      "@phase-2",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-PRD-004": {
+    "title": "Product form rejects invalid data",
+    "steps": [
+      {
+        "step": "[UI] Open Add product and submit an empty form",
+        "expect": "Name, SKU, Price and Stock show their errors"
+      },
+      {
+        "step": "[UI] Use the existing SKU LS-APP-001",
+        "expect": "The SKU field shows \"This SKU is already used.\""
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@prd",
+      "@sprint-3",
+      "@phase-2",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-PRD-005": {
+    "title": "A draft product is hidden from the shop",
+    "steps": [
+      {
+        "step": "[UI] Create a qa-auto product with status Draft",
+        "expect": "The admin list shows it with status draft"
+      },
+      {
+        "step": "[UI] Search the shop for it",
+        "expect": "The shop shows \"No products match your search\""
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@prd",
+      "@sprint-3",
+      "@phase-2",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-AOR-001": {
+    "title": "A new customer order shows in admin Orders",
+    "steps": [
+      {
+        "step": "[UI] Place an order as a new qa-auto customer",
+        "expect": "The confirmation shows the order ID"
+      },
+      {
+        "step": "[UI] Sign in as admin and open Orders",
+        "expect": "The list shows that order with status Paid and the customer name"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@regression",
+      "@aor",
+      "@sprint-3",
+      "@phase-2",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-AOR-002": {
+    "title": "Admin moves an order from Paid to Processing",
+    "steps": [
+      {
+        "step": "[UI] Place an order as a new qa-auto customer, then open admin Orders",
+        "expect": "The order row offers Processing and Cancelled"
+      },
+      {
+        "step": "[UI] Choose Processing",
+        "expect": "The message says the order is now Processing and the row shows Processing"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@aor",
+      "@sprint-3",
+      "@phase-2",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-AOR-003": {
+    "title": "Cancelling an order puts the stock back",
+    "steps": [
+      {
+        "step": "[UI] Note the stock of Rattan Coaster Set in admin Products, then order 2 as a qa-auto customer",
+        "expect": "Admin Products shows the stock 2 lower"
+      },
+      {
+        "step": "[UI] Cancel the order in admin Orders",
+        "expect": "The row shows Cancelled and the stock is back to the first value"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@aor",
+      "@sprint-3",
+      "@phase-2",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-USR-001": {
+    "title": "A customer cannot open admin pages",
+    "steps": [
+      {
+        "step": "[UI] Sign in as customer@demo.com",
+        "expect": "The header has no Admin link"
+      },
+      {
+        "step": "[UI] Open the admin Users page by its address",
+        "expect": "The page says \"You do not have access to this page\""
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@regression",
+      "@usr",
+      "@sprint-4",
+      "@phase-2",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-USR-002": {
+    "title": "A disabled customer cannot sign in",
+    "steps": [
+      {
+        "step": "[UI] Register a qa-auto customer, then sign in as admin and open Users",
+        "expect": "The new user shows status active"
+      },
+      {
+        "step": "[UI] Select Disable and confirm",
+        "expect": "The row shows status disabled"
+      },
+      {
+        "step": "[UI] Sign in as the disabled customer",
+        "expect": "The alert says \"This account is disabled. Contact support.\""
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@usr",
+      "@sprint-4",
+      "@phase-2",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-USR-003": {
+    "title": "Admin cannot change their own role or status",
+    "steps": [
+      {
+        "step": "[UI] Sign in as admin and open Users",
+        "expect": "The Demo Admin row has no role list and no Disable button"
+      }
+    ],
+    "tags": [
+      "@regression",
+      "@usr",
+      "@sprint-4",
+      "@phase-2",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-DSH-001": {
+    "title": "Admin dashboard shows the KPIs",
+    "steps": [
+      {
+        "step": "[UI] Sign in as admin and open Dashboard",
+        "expect": "Revenue, Orders, Customers and Low stock items show numbers, and Recent orders lists 5 rows"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@regression",
+      "@dsh",
+      "@sprint-4",
+      "@phase-2",
+      "@ui"
+    ],
+    "layer": "UI"
+  },
+  "TC-AUTH-101": {
+    "title": "API: valid sign in returns a token",
+    "steps": [
+      {
+        "step": "[API] POST /api/auth/login with the demo admin account",
+        "expect": "HTTP 200, body has token and user.role admin"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@auth",
+      "@sprint-1",
+      "@phase-1",
+      "@api"
+    ],
+    "layer": "API"
+  },
+  "TC-AUTH-102": {
+    "title": "API: wrong password returns 401",
+    "steps": [
+      {
+        "step": "[API] POST /api/auth/login with a wrong password",
+        "expect": "HTTP 401, error.code INVALID_CREDENTIALS"
+      }
+    ],
+    "tags": [
+      "@auth",
+      "@sprint-1",
+      "@phase-1",
+      "@api"
+    ],
+    "layer": "API"
+  },
+  "TC-CAT-101": {
+    "title": "API: product list returns 11 active products",
+    "steps": [
+      {
+        "step": "[API] GET /api/products",
+        "expect": "HTTP 200, total 11, no product with status draft"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@cat",
+      "@sprint-1",
+      "@phase-1",
+      "@api"
+    ],
+    "layer": "API"
+  },
+  "TC-CART-101": {
+    "title": "API: out-of-stock product returns 409",
+    "steps": [
+      {
+        "step": "[API] POST /api/cart/items with productId p6 (Bucket Hat)",
+        "expect": "HTTP 409, error.code OUT_OF_STOCK"
+      }
+    ],
+    "tags": [
+      "@cart",
+      "@sprint-2",
+      "@phase-1",
+      "@api"
+    ],
+    "layer": "API"
+  },
+  "TC-CHK-101": {
+    "title": "API: declined card returns 402",
+    "steps": [
+      {
+        "step": "[API] POST /api/orders with card 4000000000000002",
+        "expect": "HTTP 402, error.code PAYMENT_DECLINED"
+      }
+    ],
+    "tags": [
+      "@chk",
+      "@sprint-2",
+      "@phase-1",
+      "@api"
+    ],
+    "layer": "API"
+  },
+  "TC-AOR-101": {
+    "title": "API: invalid status change returns 409",
+    "steps": [
+      {
+        "step": "[API] PATCH /api/admin/orders/LS-10001 with status Processing (order is Delivered)",
+        "expect": "HTTP 409, error.code INVALID_TRANSITION"
+      }
+    ],
+    "tags": [
+      "@aor",
+      "@sprint-3",
+      "@phase-2",
+      "@api"
+    ],
+    "layer": "API"
+  },
+  "TC-USR-101": {
+    "title": "API: admin endpoint without a token returns 401",
+    "steps": [
+      {
+        "step": "[API] GET /api/admin/stats without a token",
+        "expect": "HTTP 401, error.code UNAUTHORIZED"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@usr",
+      "@sprint-4",
+      "@phase-2",
+      "@api"
+    ],
+    "layer": "API"
+  },
+  "TC-USR-102": {
+    "title": "API: admin endpoint as a customer returns 403",
+    "steps": [
+      {
+        "step": "[API] GET /api/admin/stats with a customer token",
+        "expect": "HTTP 403, error.code FORBIDDEN"
+      }
+    ],
+    "tags": [
+      "@smoke",
+      "@usr",
+      "@sprint-4",
+      "@phase-2",
+      "@api"
+    ],
+    "layer": "API"
+  },
+  "TC-USR-103": {
+    "title": "API: admin cannot change their own role",
+    "steps": [
+      {
+        "step": "[API] PATCH /api/admin/users/u1 with role customer as the admin",
+        "expect": "HTTP 409, error.code SELF_CHANGE"
+      }
+    ],
+    "tags": [
+      "@usr",
+      "@sprint-4",
+      "@phase-2",
+      "@api"
+    ],
+    "layer": "API"
+  }
+}
