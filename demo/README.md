@@ -84,6 +84,14 @@ The run starts the demo server by itself. The results go to `automation/scenario
 
 Add `--no-publish` to keep a run local only.
 
+## QA Lab runner
+
+The QA Lab on <https://fattahwg.github.io/lab> runs the UI suite here on GitHub Actions and shows it live.
+
+- `.github/workflows/e2e-lawak-store.yml` runs every UI case in Chromium against the local demo server. The QA Lab starts it with a `run_id`; it also runs every day at 08:00 WIB.
+- `reporters/cloud-reporter.ts` sends the events, the step screenshots, and an mp4 video per test to the QA Lab API. It does nothing unless `BACKEND_URL` and `RUNNER_TOKEN` are set, so local runs do not change.
+- The repository needs the secret `RUNNER_TOKEN` and the variable `QA_LAB_BACKEND_URL`.
+
 ## Known defect (planted on purpose)
 
 **DEF-001.** Checkout accepts a 4-digit postal code. Rule R-07 needs exactly 5 digits. `TC-CHK-006` fails until the rule is fixed in `backend.js` (`validateCheckout`). The defect shows how a failure moves through the evidence document, the workbook and the dashboard.

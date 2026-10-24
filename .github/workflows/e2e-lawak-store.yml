@@ -1,0 +1,109 @@
+name: E2E Lawak Store (QA Lab)
+
+# The QA Lab on fattahwg.github.io starts this workflow with a run_id. It never runs for pull requests,
+# so the secrets are not open to code from a pull request.
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Run ID from the QA Lab. Leave empty for a manual run; the reporter then makes its own run.
+        required: false
+        default: ''
+  schedule:
+    # Every day at 08:00 WIB
+    - cron: '0 1 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: e2e-lawak-store
+  cancel-in-progress: false
+
+jobs:
+  e2e:
+    name: Playwright UI suite (chromium)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: demo
+    env:
+      BACKEND_URL: ${{ vars.QA_LAB_BACKEND_URL }}
+      RUNNER_TOKEN: ${{ secrets.RUNNER_TOKEN }}
+      RUN_ID: ${{ inputs.run_id }}
+      RUN_TRIGGER: ${{ github.event_name == 'schedule' && 'schedule' || 'owner' }}
+    steps:
+      # Mark the run as started at once, so viewers see that a runner picked it up.
+      - name: Mark the run as started
+        if: ${{ inputs.run_id && env.BACKEND_URL }}
+        working-directory: .
+        run: |
+          curl -sS -f -X POST "$BACKEND_URL/api/runner/events" \
+            -H "Authorization: Bearer $RUNNER_TOKEN" -H 'Content-Type: application/json' \
+            -d "{\"runId\":\"$RUN_ID\",\"events\":[{\"type\":\"run.started\",\"githubRunId\":$GITHUB_RUN_ID,\"githubRunUrl\":\"$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID\"}]}" \
+            || echo "::warning::Could not reach the QA Lab backend"
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: demo/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Get the Playwright version
+        id: playwright
+        run: echo "version=$(node -p "require('@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Cache the Playwright browsers
+        id: browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.playwright.outputs.version }}
+
+      - name: Install Chromium
+        if: steps.browsers.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+
+      - name: Install the Chromium system packages
+        if: steps.browsers.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+
+      # Playwright records webm. The reporter turns it into mp4 so the video plays in Safari.
+      - name: Install ffmpeg
+        if: ${{ env.BACKEND_URL }}
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg > /dev/null
+
+      # Every UI case. The config starts the local demo server; the suite never targets production.
+      - name: Run the Playwright UI suite
+        run: npx playwright test --project=chromium --grep "@regression"
+        env:
+          CI: true
+          RUN_DIR: automation/last-run
+
+      # The job stopped before the reporter sent run.finished (install failed, timeout, cancelled):
+      # close the run, so it does not hang in the QA Lab. The backend ignores this when the run already ended.
+      - name: Close the QA Lab run
+        if: ${{ always() && env.BACKEND_URL }}
+        working-directory: .
+        env:
+          STATUS: ${{ job.status == 'cancelled' && 'cancelled' || 'failed' }}
+        run: |
+          RID="${RUN_ID:-$(cat "$RUNNER_TEMP/qa-lab-run-id" 2>/dev/null || true)}"
+          [ -z "$RID" ] && exit 0
+          curl -sS -X POST "$BACKEND_URL/api/runner/events" \
+            -H "Authorization: Bearer $RUNNER_TOKEN" -H 'Content-Type: application/json' \
+            -d "{\"runId\":\"$RID\",\"events\":[{\"type\":\"run.finished\",\"status\":\"$STATUS\",\"passed\":0,\"failed\":0,\"skipped\":0,\"durationMs\":0}]}" || true
+
+      - name: Upload the Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: demo/automation/last-run/report/
+          retention-days: 14

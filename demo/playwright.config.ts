@@ -17,11 +17,15 @@ export default defineConfig({
     ['html', { outputFolder: `${RUN_DIR}/report`, open: 'never' }],
     ['json', { outputFile: `${RUN_DIR}/results.json` }],
     ['junit', { outputFile: `${RUN_DIR}/junit.xml` }],
+    // Sends the run to the QA Lab on the portfolio. It does nothing without BACKEND_URL and RUNNER_TOKEN.
+    ['./reporters/cloud-reporter.ts'],
   ],
   use: {
     baseURL: process.env.BASE_URL ?? env.baseUrl,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
+    // The QA Lab shows a video per test. Local runs keep the old behavior.
+    video: process.env.CI && process.env.BACKEND_URL ? 'on' : 'off',
     locale: 'en-GB',
   },
   webServer: {
