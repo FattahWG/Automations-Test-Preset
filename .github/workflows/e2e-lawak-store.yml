@@ -9,6 +9,18 @@ on:
         description: Run ID from the QA Lab. Leave empty for a manual run; the reporter then makes its own run.
         required: false
         default: ''
+      suite:
+        description: "ui (Playwright) or api (Bruno)"
+        required: false
+        default: ui
+      cases:
+        description: Comma-separated case IDs, for example TC-AUTH-001,TC-CART-002. Empty runs every UI case.
+        required: false
+        default: ''
+      label:
+        description: "The visitor's choice, for the evidence document: smoke, regression, custom or api"
+        required: false
+        default: regression
   schedule:
     # Every day at 08:00 WIB
     - cron: '0 1 * * *'
@@ -22,7 +34,7 @@ concurrency:
 
 jobs:
   e2e:
-    name: Playwright UI suite (chromium)
+    name: ${{ inputs.suite == 'api' && 'Bruno API suite' || 'Playwright UI suite (chromium)' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     defaults:
@@ -33,7 +45,22 @@ jobs:
       RUNNER_TOKEN: ${{ secrets.RUNNER_TOKEN }}
       RUN_ID: ${{ inputs.run_id }}
       RUN_TRIGGER: ${{ github.event_name == 'schedule' && 'schedule' || 'owner' }}
+      SUITE: ${{ inputs.suite || 'ui' }}
+      CASES: ${{ inputs.cases }}
+      LABEL: ${{ inputs.label || 'regression' }}
     steps:
+      # The inputs come from the QA Lab backend, which already checks them. Check again: only known shapes pass.
+      - name: Check the inputs
+        working-directory: .
+        run: |
+          [[ "$SUITE" == "ui" || "$SUITE" == "api" ]] || { echo "::error::Unknown suite"; exit 1; }
+          [[ -z "$CASES" || "$CASES" =~ ^TC-[A-Z]+-[0-9]{3}(,TC-[A-Z]+-[0-9]{3})*$ ]] || { echo "::error::Bad case list"; exit 1; }
+          [[ "$LABEL" =~ ^(smoke|regression|custom|api)$ ]] || { echo "::error::Unknown label"; exit 1; }
+          echo "QA_LAB_STARTED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
+          GREP="@regression"
+          [ -n "$CASES" ] && GREP="${CASES//,/|}"
+          echo "QA_LAB_GREP=$GREP" >> "$GITHUB_ENV"
+
       # Mark the run as started at once, so viewers see that a runner picked it up.
       - name: Mark the run as started
         if: ${{ inputs.run_id && env.BACKEND_URL }}
@@ -67,24 +94,46 @@ jobs:
           key: playwright-${{ runner.os }}-${{ steps.playwright.outputs.version }}
 
       - name: Install Chromium
-        if: steps.browsers.outputs.cache-hit != 'true'
+        if: env.SUITE == 'ui' && steps.browsers.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps chromium
 
       - name: Install the Chromium system packages
-        if: steps.browsers.outputs.cache-hit == 'true'
+        if: env.SUITE == 'ui' && steps.browsers.outputs.cache-hit == 'true'
         run: npx playwright install-deps chromium
 
-      # Playwright records webm. The reporter turns it into mp4 so the video plays in Safari.
-      - name: Install ffmpeg
-        if: ${{ env.BACKEND_URL }}
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg > /dev/null
-
-      # Every UI case. The config starts the local demo server; the suite never targets production.
+      # The picked UI cases, or every UI case. The config starts the local demo server; the suite never targets production.
+      # A visitor run (run_id) pauses 2.5 s after each step and sends a live frame every 2 s.
       - name: Run the Playwright UI suite
-        run: npx playwright test --project=chromium --grep "@regression"
+        if: env.SUITE == 'ui'
+        run: npx playwright test --project=chromium --grep "$QA_LAB_GREP"
         env:
           CI: true
           RUN_DIR: automation/last-run
+          QA_LAB_STEP_DELAY_MS: ${{ inputs.run_id && '2500' || '' }}
+          QA_LAB_LIVE_MS: ${{ inputs.run_id && '2000' || '' }}
+
+      # Every API case: the requests share setup steps (login, cart), so they always run together.
+      - name: Run the Bruno API suite
+        if: env.SUITE == 'api'
+        run: |
+          node server/server.js &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:4173/store/ > /dev/null && break; sleep 1; done
+          node scripts/qa-lab-api.mjs
+        env:
+          RUN_DIR: automation/last-run
+          QA_LAB_STEP_DELAY_MS: ${{ inputs.run_id && '2500' || '' }}
+
+      # The Word evidence document of this run, for download on the QA Lab run page.
+      - uses: actions/setup-python@v5
+        if: ${{ !cancelled() && env.BACKEND_URL }}
+        with:
+          python-version: '3.12'
+
+      - name: Build and upload the Word evidence document
+        if: ${{ !cancelled() && env.BACKEND_URL }}
+        run: |
+          python -m pip install --quiet python-docx pillow
+          node scripts/qa-lab-evidence.js --run-dir automation/last-run --suite "$LABEL"
 
       # The job stopped before the reporter sent run.finished (install failed, timeout, cancelled):
       # close the run, so it does not hang in the QA Lab. The backend ignores this when the run already ended.
@@ -101,7 +150,7 @@ jobs:
             -d "{\"runId\":\"$RID\",\"events\":[{\"type\":\"run.finished\",\"status\":\"$STATUS\",\"passed\":0,\"failed\":0,\"skipped\":0,\"durationMs\":0}]}" || true
 
       - name: Upload the Playwright report
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && env.SUITE == 'ui' }}
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report

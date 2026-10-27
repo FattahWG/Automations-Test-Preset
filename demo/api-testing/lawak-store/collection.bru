@@ -1,0 +1,5 @@
+script:pre-request {
+  // The QA Lab sets QA_LAB_STEP_DELAY_MS, so visitors can follow each request live. Local runs do not wait.
+  const delay = Number(bru.getProcessEnv("QA_LAB_STEP_DELAY_MS") || 0);
+  if (delay > 0) await bru.sleep(delay);
+}

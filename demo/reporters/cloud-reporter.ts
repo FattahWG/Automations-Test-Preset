@@ -2,7 +2,7 @@
 // Active only when BACKEND_URL and RUNNER_TOKEN are set (GitHub Actions). In a local run it does nothing.
 // Every hook adds a task to one queue, so events arrive in order and a `step` event goes out
 // after its screenshot is stored. A failed upload never fails a test.
-import { spawn } from 'child_process';
+// The live view frames come from the liveView fixture in tests/support/case.fixture.ts.
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -30,16 +30,6 @@ function githubRun(): { githubRunId?: number; githubRunUrl?: string } {
   const { GITHUB_RUN_ID, GITHUB_SERVER_URL, GITHUB_REPOSITORY } = process.env;
   if (!GITHUB_RUN_ID || !GITHUB_SERVER_URL || !GITHUB_REPOSITORY) return {};
   return { githubRunId: Number(GITHUB_RUN_ID), githubRunUrl: `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}` };
-}
-
-/** webm → mp4 (H.264), so the video plays in Safari. Without ffmpeg, send the webm. */
-function toMp4(input: string): Promise<string | null> {
-  const output = input.replace(/\.webm$/, '.mp4');
-  return new Promise((resolve) => {
-    const ffmpeg = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-i', input, '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '30', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', '-an', output]);
-    ffmpeg.on('error', () => resolve(null));
-    ffmpeg.on('close', (code) => resolve(code === 0 && fs.existsSync(output) ? output : null));
-  });
 }
 
 /** "TC-CART-001 Add a product to the cart" → case ID and title. */
@@ -114,7 +104,9 @@ class CloudReporter implements Reporter {
     this.enqueue(async () => {
       const index = (this.stepIndex.get(testId) ?? 0) + 1;
       this.stepIndex.set(testId, index);
-      const data = shot?.body ?? (shot?.path && fs.existsSync(shot.path) ? fs.readFileSync(shot.path) : undefined);
+      // Only a failed step keeps its screenshot (the backend deletes it after 1 day). The live view shows the rest.
+      const evidence = step.error ? shot : undefined;
+      const data = evidence?.body ?? (evidence?.path && fs.existsSync(evidence.path) ? fs.readFileSync(evidence.path) : undefined);
       const key = data ? await this.upload(`${testId}/step-${String(index).padStart(2, '0')}.png`, data, 'image/png') : undefined;
       this.push({ type: 'step', testId, index, label, screenshotKey: key });
     });
@@ -134,24 +126,15 @@ class CloudReporter implements Reporter {
     if (!this.enabled) return;
     const testId = this.testId(test, result);
     const status = result.status === 'passed' ? 'passed' : result.status === 'skipped' ? 'skipped' : 'failed';
-    const video = result.attachments.find((a) => a.name === 'video' && a.path)?.path;
     this.log(status === 'failed' ? 'error' : 'info', `${status === 'passed' ? '✓' : status === 'failed' ? '✘' : '–'} ${test.title} (${(result.duration / 1000).toFixed(1)}s)`);
 
     this.enqueue(async () => {
-      let videoKey: string | undefined;
-      if (video && fs.existsSync(video)) {
-        const mp4 = await toMp4(video);
-        videoKey = mp4
-          ? await this.upload(`${testId}/video.mp4`, fs.readFileSync(mp4), 'video/mp4')
-          : await this.upload(`${testId}/video.webm`, fs.readFileSync(video), 'video/webm');
-      }
       this.push({
         type: 'test.end',
         testId,
         status,
         durationMs: result.duration,
         error: result.error?.message?.replace(ANSI, '').split('\n').slice(0, 12).join('\n'),
-        videoKey,
       });
       await this.flush();
     });

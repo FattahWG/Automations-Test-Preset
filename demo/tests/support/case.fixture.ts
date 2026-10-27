@@ -17,7 +17,42 @@ export function tagsFor(id: string): string[] {
   return c.tags;
 }
 
-export const test = base.extend<{ caseStep: StepFn }>({
+// QA Lab visitor runs only (GitHub Actions sets these). A local run has no pause and no live frames.
+const STEP_DELAY_MS = Number(process.env.QA_LAB_STEP_DELAY_MS || 0);
+const LIVE_MS = Number(process.env.QA_LAB_LIVE_MS || 0);
+const LIVE_URL =
+  LIVE_MS && process.env.BACKEND_URL && process.env.RUNNER_TOKEN && process.env.RUN_ID
+    ? `${process.env.BACKEND_URL.replace(/\/$/, '')}/api/runner/artifacts/runs/${process.env.RUN_ID}/live.jpg`
+    : '';
+
+export const test = base.extend<{ caseStep: StepFn; liveView: void }>({
+  // One JPEG of the page every LIVE_MS, always to the same key: the QA Lab shows it as a live view.
+  liveView: [
+    async ({ page }, use) => {
+      if (!LIVE_URL) return use();
+      let running = true;
+      const loop = (async () => {
+        while (running) {
+          try {
+            const body = await page.screenshot({ type: 'jpeg', quality: 55 });
+            await fetch(LIVE_URL, {
+              method: 'PUT',
+              headers: { Authorization: `Bearer ${process.env.RUNNER_TOKEN}`, 'Content-Type': 'image/jpeg' },
+              body: new Uint8Array(body),
+              signal: AbortSignal.timeout(10_000),
+            });
+          } catch {
+            // The page is closing or the upload failed: the next frame tries again.
+          }
+          await new Promise((resolve) => setTimeout(resolve, LIVE_MS));
+        }
+      })();
+      await use();
+      running = false;
+      await loop;
+    },
+    { auto: true },
+  ],
   caseStep: async ({ page }, use, testInfo) => {
     const caseId = testInfo.title.split(' ')[0];
     const expected = (catalog as any)[caseId]?.steps?.length;
@@ -27,6 +62,8 @@ export const test = base.extend<{ caseStep: StepFn }>({
       await base.step(`[${kind}] ${caseId} S${no} ${title}`, async () => {
         try {
           const out = await body();
+          // A short pause after each UI step, so a visitor can follow the live view.
+          if (kind === 'UI' && STEP_DELAY_MS) await page.waitForTimeout(STEP_DELAY_MS);
           if (typeof out === 'string') testInfo.annotations.push({ type: `actual-S${no}`, description: out });
           if (kind === 'API' && out && typeof out !== 'string') {
             await testInfo.attach(`${caseId}_${no}-API.json`, {

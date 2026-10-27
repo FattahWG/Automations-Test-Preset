@@ -10,7 +10,8 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   workers: 1, // one shared demo backend: keep the order of data changes predictable
-  timeout: 45_000,
+  // A QA Lab visitor run pauses after each step (QA_LAB_STEP_DELAY_MS), so a test needs more time.
+  timeout: process.env.QA_LAB_STEP_DELAY_MS ? 120_000 : 45_000,
   expect: { timeout: 7_000 },
   reporter: [
     ['list'],
@@ -24,8 +25,8 @@ export default defineConfig({
     baseURL: process.env.BASE_URL ?? env.baseUrl,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
-    // The QA Lab shows a video per test. Local runs keep the old behavior.
-    video: process.env.CI && process.env.BACKEND_URL ? 'on' : 'off',
+    // The QA Lab shows a live view instead of a video, so R2 keeps almost nothing.
+    video: 'off',
     locale: 'en-GB',
   },
   webServer: {
